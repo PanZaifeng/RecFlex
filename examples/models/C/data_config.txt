@@ -1,0 +1,8 @@
+multi-hot-static,100,10,1.0
+multi-hot-static,100,20,1.0
+multi-hot-static,100,50,0.3
+multi-hot,100,10,10,50,0.8
+multi-hot,100,50,10,100,0.8
+multi-hot,100,50,10,100,0.3
+multi-hot-one-side,100,10,20,0.5
+multi-hot-one-side,100,50,50,0.2

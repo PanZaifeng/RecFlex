@@ -1,0 +1,12 @@
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+one-hot,100,1.0
+multi-hot,100,20,10,100,0.8
+multi-hot,100,20,50,100,0.5

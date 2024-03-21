@@ -1,0 +1,6 @@
+OneHotSchedule
+OneHotSchedule
+OneHotSchedule
+OneHotSchedule
+ReduceByKeySchedule,OneBlockMultiSampleSchedule,WarpPerSampleSchedule
+ReduceByKeySchedule,OneBlockMultiSampleSchedule,WarpPerSampleSchedule
