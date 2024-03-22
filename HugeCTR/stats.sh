@@ -12,11 +12,9 @@
 
 
 outdir=output
-
-for m in D; do
-  nsys stats -f csv --report gpukernsum $outdir/${m}_g.nsys-rep | awk -v m="$m" -F, 'BEGIN {tsum=0} {if(NR>=2) tsum+=$2} END {print m","tsum/1e6}' >> $outdir/result_g_e2e_kern.txt
-done
+mkdir -p $outdir
 
 for m in D E; do
-  nsys stats -f csv --report gpukernsum $outdir/${m}_c.nsys-rep | awk -v m="$m" -F, 'BEGIN {tsum=0} {if(NR>=2) tsum+=$2} END {print m","tsum/1e6}' >> $outdir/result_c_e2e_kern.txt
+  nsys stats -f csv --report gpukernsum $outdir/${m}_c.nsys-rep | grep embedding | awk -v m="$m" -F, 'BEGIN {tsum=0} {tsum+=$2} END {print m","tsum/1e6}' >> $outdir/result.txt
+  nsys stats -f csv --report gpukernsum $outdir/${m}_c.nsys-rep | awk -v m="$m" -F, 'BEGIN {tsum=0} {if(NR>=2) tsum+=$2} END {print m","tsum/1e6}' >> $outdir/result_e2e.txt
 done
