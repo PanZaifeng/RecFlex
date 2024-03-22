@@ -23,8 +23,8 @@ def plot_mutation(data, select, color, label):
 
 
 def plot(data_list, selects, save):
-    figsize = (10, 6)
-    fontsize = 22
+    figsize = (9, 3.75)
+    fontsize = 18 
 
     fig = plt.figure(figsize=figsize)
 
@@ -37,8 +37,8 @@ def plot(data_list, selects, save):
     plt.xticks(fontsize=fontsize)
     plt.yticks(fontsize=fontsize)
 
-    plt.legend(bbox_to_anchor=(0.45, 1.05), loc="lower center", ncol=4,
-               fontsize=fontsize, handletextpad=0.5, columnspacing=1.0,
+    plt.legend(bbox_to_anchor=(0.47, 1.05), loc="lower center", ncol=3,
+               fontsize=fontsize - 2, handletextpad=0.5, columnspacing=4.0,
                frameon=False)
     plt.xlabel("Selected Schedule ID", fontsize=fontsize)
     plt.ylabel("Normalized Kernel\nPerformance", fontsize=fontsize)

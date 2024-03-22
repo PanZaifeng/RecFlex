@@ -20,7 +20,7 @@ plt.rcParams["pdf.fonttype"] = 42
 def plot_bars(data_list, fontsize=22, save="noinline.pdf"):
     models = ["A", "B", "C", "D", "E"]
     labels = ["Jump Table", "If-else Branches"]
-    colors = ["#F9E264", "#F8CBAD"]
+    colors = ["#DCF8E6", "#F8CBAD"]
     hatches = ["/", "-"]
 
     fig = plt.figure(figsize=(8, 4.5))
@@ -88,4 +88,6 @@ if __name__ == "__main__":
         data_list.append(data)
 
     data_list = normalize(data_list)
+    print([np.mean(data) for data in data_list])
+    print([np.mean(1 / data) for data in data_list])
     plot_bars(data_list, save=args.output)

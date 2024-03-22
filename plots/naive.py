@@ -17,13 +17,13 @@ import os
 plt.rcParams["pdf.fonttype"] = 42
 
 
-def plot_bars(data_list, fontsize=22, save="naive.pdf"):
+def plot_bars(data_list, fontsize=18, save="naive.pdf"):
     models = ["A", "B", "C", "D", "E"]
     labels = ["Latency-direct", "Two-stage"]
     colors = ["#E7EFFA", "#F8CBAD"]
     hatches = ["/", "-"]
 
-    fig = plt.figure(figsize=(8, 4.5))
+    fig = plt.figure(figsize=(9, 2.8))
 
     width = 1.0 / (len(data_list) + 1)
     location = np.arange(len(models))
@@ -37,7 +37,7 @@ def plot_bars(data_list, fontsize=22, save="naive.pdf"):
             np.zeros_like(data), tick_label=models)
     
     plt.legend(bbox_to_anchor=(0.45, 1.05), loc="lower center", ncol=2,
-               fontsize=fontsize - 2, handletextpad=0.5, columnspacing=2.0,
+               fontsize=fontsize - 2, handletextpad=0.5, columnspacing=5,
                frameon=False)
     plt.xlabel("Models", fontsize=fontsize, labelpad=5)
     plt.ylabel("Normalized Kernel\nPerformance", fontsize=fontsize, labelpad=10)
@@ -88,4 +88,6 @@ if __name__ == "__main__":
         data_list.append(data)
 
     data_list = normalize(data_list)
+    print([np.mean(data) for data in data_list])
+    print([np.mean(1 / data) for data in data_list])
     plot_bars(data_list, save=args.output)

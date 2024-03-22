@@ -40,10 +40,11 @@ if __name__ == "__main__":
         latency = parse_naive_results(dirname)
         perf = 1 / np.array(latency)
         data = perf / np.max(perf)
+        print(1 - np.min(data))
         data_list.append(data)
 
-    figsize = (10, 4.5)
-    fontsize = 20
+    figsize = (9, 3.2)
+    fontsize = 18
     lengen_fontsize = 16
 
     fig = plt.figure(figsize=figsize)
@@ -55,8 +56,8 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize)
 
     plt.xlabel("Schedule ID", fontsize=fontsize)
-    plt.ylabel("Normalized Performance", fontsize=fontsize)
-    plt.legend(fontsize=lengen_fontsize)
+    plt.ylabel("Normalized\nPerformance", fontsize=fontsize)
+    plt.legend(fontsize=lengen_fontsize, loc="upper left")
     plt.tight_layout()
 
     fig.savefig("opportunity.pdf", bbox_inches="tight")
