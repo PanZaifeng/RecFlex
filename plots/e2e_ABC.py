@@ -17,13 +17,13 @@ import os
 plt.rcParams["pdf.fonttype"] = 42
 
 
-def plot_bars(data_list, fontsize=22, save="e2e.pdf"):
+def plot_bars(data_list, fontsize=18, save="e2e.pdf"):
     models = ["A", "B", "C"]
     labels = ["TF", "TF-RECom", "TorchRec", "RecFlex"]
     colors = ["#CCCCCC", "#FFE699", "#B4C7E7", "#F8CBAD"]
     hatches = ["", "\\", "/", "-"]
 
-    fig = plt.figure(figsize=(8, 4.7))
+    fig = plt.figure(figsize=(9, 3.2))
 
     width = 1.0 / (len(data_list) + 1)
     location = np.arange(len(models))
@@ -36,8 +36,8 @@ def plot_bars(data_list, fontsize=22, save="e2e.pdf"):
     plt.bar(location + width * len(labels) / 2,
             np.zeros_like(data), tick_label=models)
     
-    plt.legend(bbox_to_anchor=(0.45, 1.1), loc="lower center", ncol=4,
-               fontsize=fontsize - 2, handletextpad=0.5, columnspacing=1.0,
+    plt.legend(bbox_to_anchor=(0.48, 1.05), loc="lower center", ncol=4,
+               fontsize=fontsize - 2, handletextpad=0.5, columnspacing=2.0,
                frameon=False)
     plt.xlabel("Models", fontsize=fontsize, labelpad=5)
     plt.ylabel("Normalized End-to-end\nPerformance", fontsize=fontsize, labelpad=10)

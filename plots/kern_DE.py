@@ -17,13 +17,13 @@ import os
 plt.rcParams["pdf.fonttype"] = 42
 
 
-def plot_bars(data_list, fontsize=22, save="kern.pdf"):
+def plot_bars(data_list, fontsize=18, save="kern.pdf"):
     models = ["D", "E"]
-    labels = ["TF", "TF-RECom", "TorchRec", "HugeCTR (pooling)", "RecFlex"]
+    labels = ["TF", "TF-RECom", "TorchRec", "HugeCTR", "RecFlex"]
     colors = ["#CCCCCC", "#FFE699", "#B4C7E7", "#C5E0B4", "#F8CBAD"]
     hatches = ["", "\\", "/", "|", "-"]
 
-    fig = plt.figure(figsize=(8, 4.5))
+    fig = plt.figure(figsize=(9, 3.2))
 
     width = 1.0 / (len(data_list) + 1)
     location = np.arange(len(models))
@@ -36,7 +36,7 @@ def plot_bars(data_list, fontsize=22, save="kern.pdf"):
     plt.bar(location + width * len(labels) / 2,
             np.zeros_like(data), tick_label=models)
     
-    plt.legend(bbox_to_anchor=(0.45, 1.05), loc="lower center", ncol=3,
+    plt.legend(bbox_to_anchor=(0.45, 1.05), loc="lower center", ncol=5,
                fontsize=fontsize - 2, handletextpad=0.5, columnspacing=1.0,
                frameon=False)
     plt.xlabel("Models", fontsize=fontsize, labelpad=5)
