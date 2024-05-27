@@ -1,3 +1,0 @@
-[submodule "TensorFlow/recom"]
-	path = TensorFlow/recom
-	url = https://github.com/AlibabaResearch/recom.git
