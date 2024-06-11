@@ -37,5 +37,5 @@ export GCC_HOST_COMPILER_PATH=/usr/bin/gcc
 export CC_OPT_FLAGS=-Wno-sign-compare
 export PYTHON_BIN_PATH=/usr/bin/python
 export USE_DEFAULT_PYTHON_LIB_PATH=1
-export TF_CUDA_COMPUTE_CAPABILITIES=7.5,8.6
+export TF_CUDA_COMPUTE_CAPABILITIES=7.5,8.0,8.6
 

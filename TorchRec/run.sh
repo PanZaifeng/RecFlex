@@ -11,6 +11,4 @@
 # limitations under the License.
 
 
-CUDA_VISIBLE_DEVICES=0 python prof_kernel.py -b ../examples/models/ -m A B C D E -o output &
-CUDA_VISIBLE_DEVICES=1,2,3,4,5,6,7 python prof_kernel.py -b ../examples/models/ -m A B C D E -o output --e2e &
-wait
+CUDA_VISIBLE_DEVICES=0 python prof_kernel.py -b ../examples/models/ -m A B C D E -o output

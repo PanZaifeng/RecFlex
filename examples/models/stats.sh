@@ -13,8 +13,9 @@
 
 cur_dir=$(dirname "$0")
 result_dir=${cur_dir}/results
+mkdir -p ${result_dir}
 rm -f ${result_dir}/result.txt
 for m in A B C D E; do
   mdir=${cur_dir}/$m
-  nsys stats $mdir/output/optimal/report.nsys-rep | grep Fused | awk -v m="$m" '{sum+=$2} END {print m","sum/1e6}' >> ${result_dir}/result.txt
+  nsys stats --force-export=true -f csv --report gpukernsum $mdir/output/optimal/report.nsys-rep | grep Fused | awk -v m="$m" -F, '{sum+=$2} END {printf "%s,%.6f\n", m, sum/1e6}' >> ${result_dir}/result.txt
 done
