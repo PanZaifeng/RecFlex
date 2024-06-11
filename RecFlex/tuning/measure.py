@@ -55,7 +55,7 @@ def measure_single_feat(ident: Tuple[int, int], raw_data_batches_single_feat: Li
             f.write(result)
         os_check(f"mv {temp} {output_path}")
     except Exception as e:
-        print(f"[{ident}] Execption {e}")
+        print(f"[{ident}] Exception {e}")
 
 
 def measure_naive_candidate(ident: Tuple[int, int], raw_data_batches_single_feat: List[List[str]],
