@@ -12,13 +12,12 @@
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 
 plt.rcParams["pdf.fonttype"] = 42
 
 
-def plot_bars(data_list, fontsize=18, save="e2e.pdf"):
-    models = ["D", "E"]
+def plot_bars(data_list, fontsize=18, save="kern.pdf"):
+    models = ["A", "B", "C", "D", "E"]
     labels = ["TF", "TF-RECom", "TorchRec", "HugeCTR", "RecFlex"]
     colors = ["#CCCCCC", "#FFE699", "#B4C7E7", "#C5E0B4", "#F8CBAD"]
     hatches = ["", "\\", "/", "|", "-"]
@@ -40,7 +39,7 @@ def plot_bars(data_list, fontsize=18, save="e2e.pdf"):
                fontsize=fontsize - 2, handletextpad=0.5, columnspacing=1.0,
                frameon=False)
     plt.xlabel("Models", fontsize=fontsize, labelpad=5)
-    plt.ylabel("Normalized End-to-end\nPerformance", fontsize=fontsize, labelpad=10)
+    plt.ylabel("Normalized Kernel\nPerformance", fontsize=fontsize, labelpad=10)
 
     plt.xticks(fontsize=fontsize)
     plt.yticks(fontsize=fontsize)
@@ -58,7 +57,7 @@ def read_data(fname):
             results[model] = t
 
     data = []
-    models = ["D", "E"]
+    models = ["A", "B", "C", "D", "E"]
     for model in models:
         if model not in results.keys():
             data.append(np.inf)
@@ -82,7 +81,7 @@ if __name__ == "__main__":
     parser.add_argument("--recom", type=str, required=True)
     parser.add_argument("--torchrec", type=str, required=True)
     parser.add_argument("--hugectr", type=str, required=True)
-    parser.add_argument("--output", type=str, default="e2e_DE.pdf")
+    parser.add_argument("--output", type=str, default="kern.pdf")
     args = parser.parse_args()
 
     data_list = []

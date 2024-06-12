@@ -12,16 +12,15 @@
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 
 plt.rcParams["pdf.fonttype"] = 42
 
 
 def plot_bars(data_list, fontsize=18, save="e2e.pdf"):
-    models = ["A", "B", "C"]
-    labels = ["TF", "TF-RECom", "TorchRec", "RecFlex"]
-    colors = ["#CCCCCC", "#FFE699", "#B4C7E7", "#F8CBAD"]
-    hatches = ["", "\\", "/", "-"]
+    models = ["A", "B", "C", "D", "E"]
+    labels = ["TF", "TF-RECom", "TorchRec", "HugeCTR", "RecFlex"]
+    colors = ["#CCCCCC", "#FFE699", "#B4C7E7", "#C5E0B4", "#F8CBAD"]
+    hatches = ["", "\\", "/", "|", "-"]
 
     fig = plt.figure(figsize=(9, 3.2))
 
@@ -35,12 +34,13 @@ def plot_bars(data_list, fontsize=18, save="e2e.pdf"):
                 color=color, hatch=hatch, edgecolor="k", alpha=1)
     plt.bar(location + width * len(labels) / 2,
             np.zeros_like(data), tick_label=models)
-    
-    plt.legend(bbox_to_anchor=(0.48, 1.05), loc="lower center", ncol=4,
-               fontsize=fontsize - 2, handletextpad=0.5, columnspacing=2.0,
+
+    plt.legend(bbox_to_anchor=(0.45, 1.05), loc="lower center", ncol=5,
+               fontsize=fontsize - 2, handletextpad=0.5, columnspacing=1.0,
                frameon=False)
     plt.xlabel("Models", fontsize=fontsize, labelpad=5)
-    plt.ylabel("Normalized End-to-end\nPerformance", fontsize=fontsize, labelpad=10)
+    plt.ylabel("Normalized End-to-end\nPerformance", fontsize=fontsize,
+               labelpad=10)
 
     plt.xticks(fontsize=fontsize)
     plt.yticks(fontsize=fontsize)
@@ -58,7 +58,7 @@ def read_data(fname):
             results[model] = t
 
     data = []
-    models = ["A", "B", "C"]
+    models = ["A", "B", "C", "D", "E"]
     for model in models:
         if model not in results.keys():
             data.append(np.inf)
@@ -81,11 +81,13 @@ if __name__ == "__main__":
     parser.add_argument("--tf", type=str, required=True)
     parser.add_argument("--recom", type=str, required=True)
     parser.add_argument("--torchrec", type=str, required=True)
-    parser.add_argument("--output", type=str, default="e2e_ABC.pdf")
+    parser.add_argument("--hugectr", type=str, required=True)
+    parser.add_argument("-o", "--output", type=str, default="e2e.pdf")
     args = parser.parse_args()
 
     data_list = []
-    for fname in [args.tf, args.recom, args.torchrec, args.recflex]:
+    for fname in [args.tf, args.recom, args.torchrec, args.hugectr,
+                  args.recflex]:
         data = read_data(fname)
         data_list.append(data)
 
