@@ -14,6 +14,6 @@
 outdir=output
 for x in tf recom; do
   for m in A B C D E; do
-    nsys stats -f csv --report gpukernsum $outdir/$x/$m.nsys-rep | awk -v m="$m" -F, 'BEGIN {tsum=0} {if(NR>=2) tsum+=$2} END {print m","tsum/1e6}' >> $outdir/$x/result_e2e.txt
+    nsys stats --force-export true -f csv --report gpukernsum $outdir/$x/$m.nsys-rep | awk -v m="$m" -F, 'BEGIN {tsum=0} {if(NR>=2) tsum+=$2} END {print m","tsum/1e6}' >> $outdir/$x/result_e2e.txt
   done
 done

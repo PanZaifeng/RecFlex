@@ -20,6 +20,6 @@ done
 for m in A B C D E; do
   mdir=${cur_dir}/$m
   for pool in mean max; do
-    nsys stats --force-export=true -f csv --report gpukernsum $mdir/output/fixed_thread_binding_${pool}/report.nsys-rep | grep Fused | awk -v m="$m" -F, '{sum+=$2} END {print m","sum/1e6}' >> ${result_dir}/fixed_${pool}.txt
+    nsys stats --force-export true -f csv --report gpukernsum $mdir/output/fixed_thread_binding_${pool}/report.nsys-rep | grep Fused | awk -v m="$m" -F, '{sum+=$2} END {print m","sum/1e6}' >> ${result_dir}/fixed_${pool}.txt
   done
 done

@@ -13,8 +13,8 @@
 
 outdir=output
 for m in A B C D E; do
-  nsys stats -f csv --report gpukernsum $outdir/tf/$m.nsys-rep | grep -e 'Segment' -e 'Gather' | awk -v m="$m" -F, 'BEGIN {tsum=0} {tsum+=$2} END {print m","tsum/1e6}' >> $outdir/tf/result.txt
+  nsys stats --force-export true -f csv --report gpukernsum $outdir/tf/$m.nsys-rep | grep -e 'Segment' -e 'Gather' | awk -v m="$m" -F, 'BEGIN {tsum=0} {tsum+=$2} END {print m","tsum/1e6}' >> $outdir/tf/result.txt
 done
 for m in A B C D E; do
-  nsys stats -f csv --report gpukernsum $outdir/recom/$m.nsys-rep | grep Fused | awk -v m="$m" -F, 'BEGIN {tsum=0} {tsum+=$2} END {print m","tsum/1e6}' >> $outdir/recom/result.txt
+  nsys stats --force-export true -f csv --report gpukernsum $outdir/recom/$m.nsys-rep | grep Fused | awk -v m="$m" -F, 'BEGIN {tsum=0} {tsum+=$2} END {print m","tsum/1e6}' >> $outdir/recom/result.txt
 done

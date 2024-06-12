@@ -15,5 +15,5 @@ outdir=end_to_end
 mkdir -p $outdir
 for m in A B C D E; do
   CUDA_VISIBLE_DEVICES=0 nsys profile -c cudaProfilerApi -t cuda -f true -o $outdir/$m python end_to_end.py -t models/$m/table_config.txt -b models/$m/output/optimal/build -d models/$m/data
-  nsys stats --force-export -f csv --report gpukernsum $outdir/$m.nsys-rep | awk -v m="$m" -F, 'BEGIN {tsum=0} {if(NR>=2) tsum+=$2} END {print m","tsum/1e6}' >> $outdir/result.txt
+  nsys stats --force-export true -f csv --report gpukernsum $outdir/$m.nsys-rep | awk -v m="$m" -F, 'BEGIN {tsum=0} {if(NR>=2) tsum+=$2} END {print m","tsum/1e6}' >> $outdir/result.txt
 done
