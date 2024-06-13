@@ -19,7 +19,7 @@ plt.rcParams["pdf.fonttype"] = 42
 
 def plot_bars(data_list, fontsize=18, save="naive.pdf"):
     models = ["A", "B", "C", "D", "E"]
-    labels = ["Latency-direct", "Two-stage"]
+    labels = ["Direct Separate-combine", "Two-stage"]
     colors = ["#E7EFFA", "#F8CBAD"]
     hatches = ["/", "-"]
 

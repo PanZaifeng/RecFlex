@@ -19,7 +19,7 @@ plt.rcParams["pdf.fonttype"] = 42
 
 def plot_bars(data_list, fontsize=18, save="fixed_thread_binding.pdf"):
     models = ["A", "B", "C", "D", "E"]
-    labels = ["Static TB (mean)", "Static TB (max)", "Runtime TB"]
+    labels = ["Static TM (mean)", "Static TM (max)", "Runtime TM"]
     colors = ["#F6CAE5", "#A1A9D0", "#F8CBAD"]
     hatches = ["\\", "/", "-"]
 

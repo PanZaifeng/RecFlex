@@ -23,7 +23,7 @@ def plot_mutation(data, select, color, label):
 
 
 def plot(data_list, selects, save):
-    figsize = (9, 3.75)
+    figsize = (9, 4.25)
     fontsize = 18 
 
     fig = plt.figure(figsize=figsize)
@@ -40,8 +40,8 @@ def plot(data_list, selects, save):
     plt.legend(bbox_to_anchor=(0.47, 1.05), loc="lower center", ncol=3,
                fontsize=fontsize - 2, handletextpad=0.5, columnspacing=4.0,
                frameon=False)
-    plt.xlabel("Selected Schedule ID", fontsize=fontsize)
-    plt.ylabel("Normalized Kernel\nPerformance", fontsize=fontsize)
+    plt.xlabel("Selected Schedule ID", fontsize=fontsize, labelpad=10)
+    plt.ylabel("Normalized Kernel\nPerformance", fontsize=fontsize, labelpad=10)
     plt.tight_layout()
 
     fig.savefig(save, bbox_inches="tight")
