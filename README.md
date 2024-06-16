@@ -86,3 +86,17 @@ After embedding lookups of all features, the concatenation operation is applied 
 
 For the input datasets, we use the script [`data_synthesis/data_generate.py`](data_synthesis/data_generate.py) and the configurations under [`examples/models`](examples/models) to generate them.
 See [`data_synthesis/README.md`](data_synthesis/README.md) for details.
+
+## Citation
+
+If you use this codebase or otherwise found our work valuable, please cite:
+
+```bibtex
+@inproceedings{pan2024recflex,
+  title = {RecFlex: Enabling Feature Heterogeneity-Aware Optimization for Deep Recommendation Models with Flexible Schedules},
+  author = {Pan, Zaifeng and Zheng, Zhen and Zhang, Feng and Xie, Bing and Wu, Ruofan and Smith, Shaden and Liu, Chuanjie and Ruwase, Olatunji and Du, Xiaoyong and Ding, Yufei},
+  booktitle = {SC24: International Conference for High Performance Computing, Networking, Storage and Analysis},
+  year = {2024},
+  organization = {IEEE}
+}
+```
