@@ -1,6 +1,9 @@
 logs
 data
+data_test
 output
+outputs
+results
 objs
 *.o
 *.so
@@ -9,6 +12,11 @@ objs
 *.sqlite
 .clangd
 core
+
+examples/compress
+TensorFlow/RECOM
+HugeCTR/D
+HugeCTR/E
 
 .cache
 .vscode
