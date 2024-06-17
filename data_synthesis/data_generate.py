@@ -29,6 +29,7 @@ def parse_args():
     parser.add_argument("-c", "--config_path", type=str, required=True)
     parser.add_argument("-t", "--table_config_path", type=str, required=True)
     parser.add_argument("-n", "--num_processes", type=int, default=64)
+    parser.add_argument("-s", "--seed_base", type=int, default=1000)
     parser.add_argument("--num_queries", type=int, default=128)
     parser.add_argument("--query_mean", type=int, default=256)
     parser.add_argument("--query_stddev", type=int, default=128)
@@ -105,9 +106,9 @@ def generate_batch_sizes(args):
             for line in f.readlines():
                 batch_sizes.append(int(line.strip()))
     else:
-        np.random.seed(int(time.time()))
+        np.random.seed(args.seed_base)
         batch_sizes = batch_size_generator(args.query_mean, args.query_stddev, args.query_max,
-                                        args.num_queries)
+                                           args.num_queries)
         temp = fname + ".tmp"
         with open(temp, "w") as f:
             for bs in batch_sizes:
@@ -117,9 +118,9 @@ def generate_batch_sizes(args):
 
 
 def generate_data_task(fname, hot_counts_list, absents_list, index_candidates,
-                       power_law_probabilities):
+                       power_law_probabilities, seed):
     print(f"Generating {fname}")
-    np.random.seed(int(time.time()) + os.getpid())
+    np.random.seed(seed)
     temp = fname + ".tmp"
     with open(temp, "w") as ofile:
         for hot_counts, absents in zip(
@@ -138,7 +139,7 @@ def generate_data_task(fname, hot_counts_list, absents_list, index_candidates,
 
 
 def generate_data(feat_types, feat_gen_nums, feat_configs, batch_sizes, row_nums,
-                  num_processes, output_dir):
+                  num_processes, seed_base, output_dir):
     task_manager = TaskManager(list(range(num_processes)))
     feat_id = 0
     for feat_type, feat_gen_num, feat_config in zip(
@@ -168,9 +169,11 @@ def generate_data(feat_types, feat_gen_nums, feat_configs, batch_sizes, row_nums
 
         for i in range(feat_gen_num):
             fname = f"{output_dir}/f{feat_id}.txt"
+            seed = seed_base + feat_id
             if not os.path.exists(fname):
                 task_manager.add_task(target=generate_data_task, args=(fname, hot_counts_list, absents_list,
-                                                                       index_candidates, power_law_probabilities))
+                                                                       index_candidates, power_law_probabilities,
+                                                                       seed))
             feat_id += 1
     task_manager.join()
 
@@ -183,7 +186,7 @@ def main():
     row_nums = [row_num for row_num, embed_dim in table_shapes]
     batch_sizes = generate_batch_sizes(args)
     generate_data(feat_types, feat_gen_nums, feat_configs, batch_sizes, row_nums,
-                  args.num_processes, args.output_dir)
+                  args.num_processes, args.seed_base, args.output_dir)
 
 
 if __name__ == "__main__":
