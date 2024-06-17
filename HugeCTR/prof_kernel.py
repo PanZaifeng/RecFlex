@@ -66,7 +66,7 @@ def launch_tasks(args: argparse.Namespace, gpu_ids: List[int]):
     iname = 'g' if args.gpu_cache else 'c'
     for model_name in args.model_names:
         model_dir = os.path.join(args.model_base_dir, model_name)
-        data_dir = os.path.join(model_dir, "data")
+        data_dir = os.path.join(model_dir, "data_test")
         data_config_path = os.path.join(model_dir, "data_config.txt")
         table_config_path = os.path.join(model_dir, "table_config.txt")
         report_prefix = os.path.join(args.output_dir, f"{model_name}_{iname}")
