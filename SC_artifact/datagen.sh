@@ -32,5 +32,8 @@ for ((i=0; i<$n; i++)); do
       -s $seed_test -o $mdir/data_test
 done
 
-ln -s -T $(realpath $models_dir/D/data) $models_dir/E/data
-ln -s -T $(realpath $models_dir/D/data_test) $models_dir/E/data_test
+for f in data data_test; do
+  if [ ! -e "$models_dir/E/$f" ]; then
+    ln -s -T $(realpath $models_dir/D/$f) $models_dir/E/$f
+  fi
+done
