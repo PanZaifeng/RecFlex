@@ -27,7 +27,7 @@ docker run --rm -v ${recflex_dir}:/recflex --gpus all -it recom:latest sh -c \
 
 docker run --rm -v ${recflex_dir}:/recflex --gpus all \
     -it nvcr.io/nvidia/merlin/merlin-hugectr:23.04 sh -c \
-    "pip install /recflex && /recflex/SC_artifact/run_hugectr.sh"
+    "cd /recflex && python setup.py install && /recflex/SC_artifact/run_hugectr.sh"
 
 docker run --rm -v ${recflex_dir}:/recflex --gpus all -it recflex:latest \
     /recflex/SC_artifact/plot.sh
