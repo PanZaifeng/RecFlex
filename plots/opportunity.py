@@ -15,6 +15,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 from typing import List
 
+plt.rcParams["pdf.fonttype"] = 42
+
 
 def parse_naive_results(dirname: str) -> List[float]:
     results = []

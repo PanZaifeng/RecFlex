@@ -13,6 +13,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 import argparse
 
+plt.rcParams["pdf.fonttype"] = 42
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

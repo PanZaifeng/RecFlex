@@ -15,6 +15,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 from typing import List
 
+plt.rcParams["pdf.fonttype"] = 42
+
 
 def plot_mutation(data, select, color, label):
     plt.plot(data, label=label, color=color)

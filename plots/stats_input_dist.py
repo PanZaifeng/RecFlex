@@ -13,6 +13,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 import argparse
 
+plt.rcParams["pdf.fonttype"] = 42
+
 
 def split_data_line(data_line):
     data_line = data_line.strip()
